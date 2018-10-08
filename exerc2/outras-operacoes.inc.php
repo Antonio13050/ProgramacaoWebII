@@ -45,4 +45,12 @@
     $quantoModificados = $conexao->affected_rows;
     echo "<p> Um total de $quantoModificados foram alterados. </p>";
 
-?>
+    //contar o total de projetos integradores onde o campo terminalidade é igual à frase "Pesquisa teórica somente" OU onde a coluna metodologia seja igual à frase "Pesquisa de campo"
+    $sql = "SELECT COUNT(*) FROM $nomeDaTabela WHERE terminalidade = 'Pesquisa teórica somente' OR metodologia = 'Pesquisa de campo'";
+    $resultado = $conexao->query($sql) or die("<p> Erro na execução da operação de contagem</p>");
+   
+    $registro = $resultado->fetch_array();
+    $quantos = $registro[0];
+
+    echo "<p> Um total de $quantos se encaixam na condição da pesquisa. </p>";
+?> 
