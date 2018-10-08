@@ -39,10 +39,10 @@
     //Implementar a consulta que altera, para qualquer PI no banco de dados, a data de apresentação para 01/03/2018, mas somente dos registros que contenham, o tema/título, a palavra "web"
 
     $sql = "UPDATE $nomeDaTabela SET DATA='2018-03-01' WHERE tema LIKE '%web%'";
-    $resultado = $conexao->query($sql) or die($conexao->error);
+    $resultado = $conexao->query($sql) or die("<p> Erro na execução da operação de alteração</p>");
 
+    //quantos registros foram alterados
     $quantoModificados = $conexao->affected_rows;
-
-    echo "<p> Um total de $quantoModificados. </p>";
+    echo "<p> Um total de $quantoModificados foram alterados. </p>";
 
 ?>
